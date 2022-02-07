@@ -15,7 +15,7 @@ class Tournament < ApplicationRecord
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
-  before_create :set_federal_state
+  before_create :set_region
   before_create :set_country_code
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
@@ -58,32 +58,32 @@ class Tournament < ApplicationRecord
     User.find_by(username: self.host_username) if self.host_username.present?
   end
 
-  def set_federal_state
-    return if self.federal_state.present?
-    federal_states_raw = ApplicationController.helpers.federal_states_raw
-    federal_states_de = I18n.t(federal_states_raw, scope: 'defines.federal_states', locale: :de).map(&:downcase)
-    federal_states_en = I18n.t(federal_states_raw, scope: 'defines.federal_states', locale: :en).map(&:downcase)
-    # First: Try to determine federal_state from city
+  def set_region
+    return if self.region.present?
+    regions_raw = ApplicationController.helpers.regions_raw
+    regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)
+    regions_en = I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase)
+    # First: Try to determine region from city
     if self.city.present?
       city = self.city.downcase
       #city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-      if (federal_states_de.include?(city) || federal_states_en.include?(city))
-        self.federal_state = federal_states_raw[federal_states_de.index(city)] if federal_states_de.index(city).present?
-        self.federal_state = federal_states_raw[federal_states_en.index(city)] if federal_states_en.index(city).present?
-        return # as soon as federal_state was found
+      if (regions_fr.include?(city) || regions_en.include?(city))
+        self.region = regions_raw[regions_fr.index(city)] if regions_fr.index(city).present?
+        self.region = regions_raw[regions_en.index(city)] if regions_en.index(city).present?
+        return # as soon as region was found
       end
     end
-    # Second: Try to determine federal_state from a word in location
+    # Second: Try to determine region from a word in location
     if self.location.present?
       self.location.downcase.split(' ').each do |l|
         l = l.gsub(',', '')#.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-        if (federal_states_de.include?(l) || federal_states_en.include?(l))
-          self.federal_state = federal_states_raw[federal_states_de.index(l)] if federal_states_de.index(l).present?
-          self.federal_state = federal_states_raw[federal_states_en.index(l)] if federal_states_en.index(l).present?
-          return # as soon as federal_state was found
+        if (regions_fr.include?(l) || regions_en.include?(l))
+          self.region = regions_raw[regions_fr.index(l)] if regions_fr.index(l).present?
+          self.region = regions_raw[regions_en.index(l)] if regions_en.index(l).present?
+          return # as soon as region was found
         end
       end
-      # Third: Try to find the federal_state with the help of Google Maps
+      # Third: Try to find the region with the help of Google Maps
       require 'open-uri'
       require 'json'
       begin
@@ -93,16 +93,16 @@ class Tournament < ApplicationRecord
             if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
               if res["long_name"].present?
                 sn = res["short_name"]
-                if federal_states_raw.include?(sn)
-                  self.federal_state = sn
-                  return # as soon as federal_state was found
+                if regions_raw.include?(sn)
+                  self.region = sn
+                  return # as soon as region was found
                 end
                 # long_name will most likely never be necessary
                 ln = res["long_name"].downcase
-                if (federal_states_de.include?(ln) || federal_states_en.include?(ln))
-                  self.federal_state = federal_states_raw[federal_states_de.index(ln)] if federal_states_de.index(ln).present?
-                  self.federal_state = federal_states_raw[federal_states_en.index(ln)] if federal_states_en.index(ln).present?
-                  return # as soon as federal_state was found
+                if (regions_fr.include?(ln) || regions_en.include?(ln))
+                  self.region = regions_raw[regions_fr.index(ln)] if regions_fr.index(ln).present?
+                  self.region = regions_raw[regions_en.index(ln)] if regions_en.index(ln).present?
+                  return # as soon as region was found
                 end
               end
             end

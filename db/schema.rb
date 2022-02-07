@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_142334) do
     t.integer "wins"
     t.integer "losses"
     t.string "main_characters", default: [], array: true
-    t.string "federal_state"
+    t.string "region"
     t.string "gender"
     t.integer "birth_year"
     t.string "prefix"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_142334) do
     t.string "image_link"
     t.string "image_height"
     t.string "image_width"
-    t.string "federal_state"
+    t.string "region"
     t.string "canton"
     t.string "country_code", default: "fr"
     t.string "region"

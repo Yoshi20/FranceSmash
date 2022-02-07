@@ -10,16 +10,16 @@ module PlayerHelper
       scope: 'defines.tournament_experiences')
   end
 
-  def federal_states_raw
-    ['BB', 'BE', 'BW', 'BY', 'HB', 'HE', 'HH', 'MV', 'NI', 'NW', 'RP', 'SH', 'SL', 'SN', 'ST', 'TH']
+  def regions_raw
+    ["Auvergne", "Bourgogne", "Bretagne", "Centre", "Corsica", "Grand_Est", "Hauts-de-France", "Ile_de_France", "Normandie", "Nouvelle_Aquitaine", "Occitanie", "Pays_de_la_Loire", "Provence-Alpes-Cote_d'Azur"]
   end
 
-  def federal_states
-    t(federal_states_raw, scope: 'defines.federal_states')
+  def regions
+    t(regions_raw, scope: 'defines.regions')
   end
 
-  def federal_states_for_select
-    federal_states.zip(federal_states_raw)
+  def regions_for_select
+    regions.zip(regions_raw)
   end
 
   def genders_raw

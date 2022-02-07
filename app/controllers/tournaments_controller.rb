@@ -22,10 +22,10 @@ class TournamentsController < ApplicationController
       @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
     if params[:filter].present? and params[:filter] != 'all'
-      if helpers.federal_states_raw.include?(params[:filter].upcase)
-        federal_state = params[:filter].upcase
-        @tournaments = @tournaments.where(federal_state: federal_state)
-        @past_tournaments = @past_tournaments.where(federal_state: federal_state)
+      if helpers.regions_raw.include?(params[:filter].upcase)
+        region = params[:filter].upcase
+        @tournaments = @tournaments.where(region: region)
+        @past_tournaments = @past_tournaments.where(region: region)
       elsif params[:filter] == 's1_2019'
         @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
         @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
@@ -661,7 +661,7 @@ class TournamentsController < ApplicationController
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools, :image_link, :image_height,
-        :image_width, :federal_state)
+        :image_width, :region)
     end
 
     def set_challonge_username_and_api_key

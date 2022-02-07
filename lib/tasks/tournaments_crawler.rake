@@ -15,7 +15,7 @@ namespace :tournaments_crawler do
   task braacket: :environment do
     puts 'Crawling https://braacket.com/tournament...'
     root = 'https://braacket.com'
-    doc = Nokogiri::HTML(URI.open('https://braacket.com/tournament/search?rows=100&country=de&game=ssbu&status=1'))
+    doc = Nokogiri::HTML(URI.open('https://braacket.com/tournament/search?rows=100&country=fr&game=ssbu&status=1'))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
       externalTournament = Tournament.new
@@ -55,7 +55,7 @@ namespace :tournaments_crawler do
     root = 'https://smash.gg/'
 
     # URL to get the data as JSON
-    doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22DE%22}&page=1&per_page=100&returnMeta=true'))
+    doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22FR%22}&page=1&per_page=100&returnMeta=true'))
     jsonHash = JSON.parse doc
     jsonHash['total_count'].times do |i|
       tournamentHash = jsonHash['items']['entities']['tournament'][i]

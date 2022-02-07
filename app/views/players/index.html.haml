@@ -66,7 +66,7 @@
       %thead.table-header
         %tr
           %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'data')
-          %th.text-center= link_to t('players.federal_state'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'federal_state', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.region'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'region', order: 'asc', anchor: 'data')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'birth_year', order: 'asc', anchor: 'data')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gender', order: 'asc', anchor: 'data')
           %th.text-center= link_to t('players.comment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'comment', order: 'desc', anchor: 'data')
@@ -85,9 +85,9 @@
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                 = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
-                - if player.federal_state.present?
-                  = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
-                  = t("defines.federal_states.#{player.federal_state}")
+                - if player.region.present?
+                  = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
+                  = t("defines.regions.#{player.region}")
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
               %td.text-center= truncate(player.comment, length: 60)

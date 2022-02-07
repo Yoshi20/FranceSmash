@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.youtube_video_ids = params[:youtube_video_ids]
         player.points = 0
         player.participations = 0
-        player.federal_state = params[:federal_state]
+        player.region = params[:region]
         player.gender = params[:gender]
         player.birth_year = params[:birth_year]
         player.self_assessment = params[:self_assessment] || 0

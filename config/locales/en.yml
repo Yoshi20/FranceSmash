@@ -40,23 +40,20 @@ en:
       some: "Some"
       a_lot: "A lot"
       very_much: "Very much"
-    federal_states:
-      BB: "Brandenburg"
-      BE: "Berlin"
-      BW: "Baden-Württemberg"
-      BY: "Bavaria"
-      HB: "Bremen"
-      HE: "Hesse"
-      HH: "Hamburg"
-      MV: "Mecklenburg Western Pomerania"
-      NI: "Lower Saxony"
-      NW: "Northrhine-Westphalia"
-      RP: "Rhineland Palatinate"
-      SH: "Schleswig Holstein"
-      SL: "Saarland"
-      SN: "Saxony"
-      ST: "Saxony-Anhalt"
-      TH: "Thuringia"
+    regions:
+      Auvergne: "Auvergne-Rhône-Alps"
+      Bourgogne: "Burgundy-Free County"
+      Bretagne: "Brittany"
+      Centre: "Centre-Loire Valley"
+      Corsica: "Corsica"
+      Grand_Est: "Great East"
+      Hauts-de-France: "Upper France"
+      Ile_de_France: "Island of France"
+      Normandie: "Normandy"
+      Nouvelle_Aquitaine: "New Aquitaine"
+      Occitanie: "Occitania"
+      Pays_de_la_Loire: "Loire Countries"
+      Provence-Alpes-Cote_d'Azur: "Provence-Alps-Azure Coast"
     genders:
       male: "Male"
       female: "Female"
@@ -369,7 +366,7 @@ en:
     best_rank: "Best rank"
     wins: "Wins"
     losses: "Losses"
-    federal_state: "Federal state"
+    region: "Federal state"
     gender: "Gender"
     birth_year: "Birth year"
     self_assessment: "Self assessment"
@@ -404,7 +401,7 @@ en:
     youngest: "Youngest"
     mean-age: "Ø age"
     oldest: "Oldest"
-    federal_state: "Federal state"
+    region: "Federal state"
     number_of_players: "Number of players"
     character: "Character"
 
@@ -561,7 +558,7 @@ en:
     log_in_to_join: ">>> Log in to be able to join this tournament <<<"
     bracket: "Bracket"
     no_players_joined: "No player has joined this tournament yet"
-    federal_state: "Federal state"
+    region: "Federal state"
     fee_paid: "Fee paid?"
     brings: "Brings"
     brought: "Brought"
@@ -604,31 +601,19 @@ en:
   communities:
     title: "Communities"
     body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
-    nds:
-      title: "#NDS"
-      text: "The NDS region consists of the following federal_states: Lower Saxony & Bremen"
-    nrw:
-      title: "#NRW"
-      text: "The NRW region consists of the following federal_states: Northrhine-Westphalia"
-    hessen:
-      title: "#Hesse"
-      text: "The Hesse region consists of the following federal_states: Hesse, Rhineland Palatinate & Saarland"
-    bawu:
-      title: "#BaWü"
-      text: "The BaWü region consists of the following federal_states: Baden-Württemberg"
-    norden:
-      title: "#North"
-      text: "The North region consists of the following federal_states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
-    berlin:
-      title: "#Berlin"
-      text: "The Berlin region consists of the following federal_states: Brandenburg & Berlin"
-    osten:
-      title: "#East"
-      text: "The East region consists of the following federal_states: Saxony, Saxony-Anhalt & Thuringia"
-    bayern:
-      title: "#Bavaria"
-      text: "The Bavaria region consists of the following federal_states: Bavaria"
-    ranking: "The best players from the region can be found here:"
+    # Auvergne
+    # Bourgogne
+    # Bretagne
+    # Centre
+    # Corsica
+    # Grand_Est
+    # Hauts-de-France
+    # Ile_de_France
+    # Normandie
+    # Nouvelle_Aquitaine
+    # Occitanie
+    # Pays_de_la_Loire
+    # Provence-Alpes-Cote_d'Azur
 
   users:
     mailer:

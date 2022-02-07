@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     #new
     added_attrs = [:username, :email, :password, :password_confirmation,
       :remember_me, :challonge_username, :challonge_api_key, :full_name,
-      :mobile_number, :area_of_responsibility, :federal_state, :gender,
+      :mobile_number, :area_of_responsibility, :region, :gender,
       :birth_year, :prefix, :discord_username, :twitter_username,
       :instagram_username, :youtube_video_ids, :allows_emails_from_francesmash,
       :allows_emails_from_partners]
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   def set_streamers
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers", expires_in: 1.minute) do
-      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=de"
+      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=fr"
       puts "Requesting: GET #{url}"
       begin
         json_data = JSON.parse(URI.open(url,

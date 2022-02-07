@@ -1,11 +1,11 @@
 .row
   .col
-    - federal_state = @tournament.federal_state
-    - if federal_state.present?
+    - region = @tournament.region
+    - if region.present?
       .tooltip
-        = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        = image_tag "regions/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
         %span.tooltiptext
-          = t("defines.federal_states.#{federal_state}")
+          = t("defines.regions.#{region}")
     %h1.page__title= @tournament.name
 
 .text-center
@@ -212,7 +212,7 @@
                   %th
                     %h3= t('tournaments.name')
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    %h3= t('tournaments.federal_state')
+                    %h3= t('tournaments.region')
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('players.mains')
                   - if @tournament.is_registration_allowed
@@ -248,8 +248,8 @@
                           %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                       = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                      - if player.federal_state.present?
-                        = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
+                      - if player.region.present?
+                        = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each do |char|

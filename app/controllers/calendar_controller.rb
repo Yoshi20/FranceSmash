@@ -7,12 +7,12 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @full_calendar_events = Calendar.full_calendar_events(current_user)
-        @federal_states = []
+        @regions = []
         JSON.parse(@full_calendar_events).each do |t|
-          federal_state = t['className'].split(' ')[-1]
-          @federal_states << federal_state if ApplicationController.helpers.federal_states_raw.include?(federal_state)
+          region = t['className'].split(' ')[-1]
+          @regions << region if ApplicationController.helpers.regions_raw.include?(region)
         end
-        @federal_states = @federal_states.uniq
+        @regions = @regions.uniq
       end
       format.ics do
         send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
@@ -26,12 +26,12 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @full_calendar_events = Calendar.full_calendar_events(current_user)
-        @federal_states = []
+        @regions = []
         JSON.parse(@full_calendar_events).each do |t|
-          federal_state = t['className'].split(' ')[-1]
-          @federal_states << federal_state if ApplicationController.helpers.federal_states_raw.include?(federal_state)
+          region = t['className'].split(' ')[-1]
+          @regions << region if ApplicationController.helpers.regions_raw.include?(region)
         end
-        @federal_states = @federal_states.uniq
+        @regions = @regions.uniq
         render "show", layout: "for_iframe"
       end
     end

@@ -32,8 +32,8 @@ General links:
 - https://challonge.com
 
 Tournaments crawler links:
-- https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22DE%22}
-- https://braacket.com/tournament/search?rows=100&country=de&game=ssbu&status=1
+- https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22FR%22%7D
+- https://braacket.com/tournament/search?rows=100&country=fr&game=ssbu&status=1
 
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)

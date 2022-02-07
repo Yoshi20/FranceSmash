@@ -49,8 +49,8 @@
         .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'upcoming'), class: "btn #{params[:filter] == 'internal' ? 'btn-ghost' : 'btn-default'}"
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
-        - federal_states_raw.each do |federal_state|
-          .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+        - regions_raw.each do |region|
+          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == region.downcase ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -79,8 +79,8 @@
         .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'past'), class: "btn #{params[:filter] == 'internal' ? 'btn-ghost' : 'btn-default'}"
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
-        - federal_states_raw.each do |federal_state|
-          .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'past'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+        - regions_raw.each do |region|
+          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region.downcase, anchor: 'past'), class: "btn #{params[:filter] == region.downcase ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
