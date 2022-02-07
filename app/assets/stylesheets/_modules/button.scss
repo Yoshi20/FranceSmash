@@ -1,0 +1,64 @@
+.btn {
+  background: $color-grey-light;
+  border: none;
+  border-radius: $border-radius-input;
+  padding: 0 .625rem;
+  position: relative;
+  height: 1.875rem;
+  font-size: $fontsize-input;
+  line-height: 1.775rem;
+
+  &.btn-cyan {
+    background: $color-cyan;
+    border: 1px solid $color-cyan;
+    color: $color-white;
+    &:hover {
+      background: $color-white;
+      color: $color-cyan;
+    }
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  }
+  &.btn-default {
+    background: $color-france-smash;
+    border: 1px solid $color-france-smash;
+    color: $color-white;
+    &:hover {
+      background: transparent;
+      color: $color-france-smash;
+    }
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  }
+  &.btn-ghost {
+    background: transparent;
+    border: 1px solid $color-france-smash;
+    color: $color-france-smash;
+    &:hover {
+      background: $color-france-smash;
+      color: $color-white;
+    }
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  }
+  &.btn-sstm {
+    background: $color-red;
+    border: 1px solid $color-red;
+    color: $color-white;
+    &:hover {
+      background: $color-white;
+      color: $color-red;
+    }
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  }
+  &.btn-square {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.2rem;
+  }
+}

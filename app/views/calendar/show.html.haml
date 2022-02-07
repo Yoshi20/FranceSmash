@@ -1,0 +1,6 @@
+-# hidden federal_state images to get the asset_urls via js
+.hidden
+  - @federal_states.each do |federal_state|
+    = image_tag "federal_states/#{federal_state}.svg", height: '1px', width: '1px', id: federal_state
+
+= render 'calendar'

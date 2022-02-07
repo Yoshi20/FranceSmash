@@ -1,0 +1,227 @@
+- youtube_video_ids = []
+- if @player.youtube_video_ids.present?
+  - youtube_video_ids = @player.sanitized_youtube_video_ids.split(',')
+.player
+  .row
+    .col
+      - if @player.federal_state.present?
+        .tooltip
+          = image_tag "federal_states/#{@player.federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          %span.tooltiptext
+            = t("defines.federal_states.#{@player.federal_state}")
+      .page__title
+        %h1
+          = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
+        - alts = @player.alternative_gamer_tags.where.not(hidden: true)
+        - if alts.any?
+          %p{style: 'margin-top: -15px;'}
+            = '('
+            - firstAlt = true
+            - alts.each do |alt|
+              - if firstAlt
+                = "#{alt.gamer_tag}"
+                - firstAlt = false
+              - else
+                = ", #{alt.gamer_tag}"
+            = ')'
+        - logos_shown = 0;
+        - if @player.discord_username.present?
+          .tooltip{style: 'position: absolute; top: 0px; right: 0px; z-index: 1;'}
+            = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
+            %span.tooltiptext{style: 'margin-left: -78px;'}
+              = @player.discord_username
+          - logos_shown = logos_shown + 1;
+        - if @player.twitter_username.present?
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          - logos_shown = logos_shown + 1;
+        - if @player.instagram_username.present?
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+
+    -# admin actions -------------------------------------------------------------
+    - if current_user.present?
+      .admin-actions
+        -if current_user.super_admin? or @player.user == current_user
+          .admin-actions__link
+            = link_to edit_player_path(@player), class:'btn btn-default btn-square' do
+              %span.material-icons.admin-actions__link__icon= 'edit'
+
+        - if @player.user != current_user
+          .admin-actions__link
+            - if @player.user.admin? or current_user.admin?
+              = mail_to @player.user.email, body: "#{t('hi')} #{@player.user.username}\n\n...", class:'btn btn-default btn-square' do
+                %span.material-icons.admin-actions__link__icon= 'email'
+          - if current_user.admin? and @player.user.mobile_number.present?
+            .mobile_number= " (#{@player.user.mobile_number})"
+
+  - if @player.tournaments.any? or youtube_video_ids.any?
+    %ul#player-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#data-tab.nav-link.active{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
+          = t('players.data')
+      - if @player.tournaments.any?
+        %li.nav-item
+          %a#tournaments-tab.nav-link{'data-toggle'=>'tab', href: '#tournaments', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.tournaments')
+      - if youtube_video_ids.any?
+        %li.nav-item
+          %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.videos')
+
+  .tab-content#information-tabs-content
+    -# data ----------------------------------------------------------------------
+    .tab-pane.fade.show.active#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
+      .player__characters
+        - if @player.main_characters.any?
+          - @player.main_characters[0...3].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
+              .player__characters__single
+                = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
+
+      - if @player.federal_state.present? || @player.birth_year.present? || @player.gender.present?
+        .player__stats
+          .row
+            - if @player.federal_state.present?
+              .col
+                .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
+                  %strong
+                    = t("defines.federal_states.#{@player.federal_state}")
+                  %span
+                    = t('players.federal_state')
+            - if @player.birth_year.present?
+              .col
+                .player__stats__single{class: (@player.gender.nil?) ? 'player__stats__single--last' : ''}
+                  %strong
+                    = @player.birth_year
+                  %span
+                    = t('players.birth_year')
+            - if @player.gender.present?
+              .col
+                .player__stats__single.player__stats__single--last
+                  %strong
+                    = t("defines.genders.#{@player.gender}")
+                  %span
+                    = t('players.gender')
+
+      .player__stats
+        .row
+          .col
+            .player__stats__single
+              %strong
+                = @player.best_rank
+              %span
+                = t('players.best_rank')
+          .col
+            .player__stats__single
+              %strong
+                = @player.wins
+              %span
+                = t('players.wins')
+          .col
+            .player__stats__single
+              %strong
+                = @player.losses
+              %span
+                = t('players.losses')
+          .col
+            .player__stats__single.player__stats__single--last
+              %strong
+                = @player.points
+              %span
+                = t('players.points')
+
+      .player__stats
+        .row
+          .col
+            .player__stats__single
+              %strong
+                = self_assessment_defines[@player.self_assessment]
+              %span
+                = t('players.self_assessment')
+          .col
+            .player__stats__single
+              %strong
+                - if @player.losses == 0 and @player.wins == 0
+                  = '-'
+                - else
+                  = "#{@player.win_loss_ratio} %"
+              %span
+                = t('players.win_loss')
+          .col
+            .player__stats__single.player__stats__single--last
+              %strong
+                = tournament_experience_defines[@player.tournament_experience]
+              %span
+                = t('players.experience')
+
+      - if current_user.present? and current_user.admin? and not @player.warnings.nil? and @player.warnings > 0
+        .player__stats
+          .row
+            .col
+              .player__stats__single.player__stats__single--last
+                %strong
+                  = @player.warnings
+                %span
+                  = t('players.warnings') + ' (TOs only)'
+
+      - if not @player.comment.nil? and not @player.comment.empty?
+        .player__comment
+          %h3= t('players.comment')
+          = @player.comment || '-'
+
+    -# tournaments ---------------------------------------------------------------
+    - if @player.tournaments.any?
+      .tab-pane.fade.show#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
+        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(:date)
+        -if joined_tournaments.any?
+          .player__tournaments
+            %table.table.table-hover.table-borderless
+              %thead.table-header
+                %tr
+                  %th{colspan: '2'}
+                    %h3= t('players.joined_tournaments')
+                  %th= t('players.joined_tournament_at')
+              %tbody.table-content.with-show
+                - joined_tournaments.each_with_index do |tournament, i|
+                  %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+                    %td= tournament.name
+                    %td
+                      - if tournament.location.present?
+                        = tournament.location.split(',')[0]
+                      - else
+                        = tournament.city || '-'
+                    %td
+                      %strong
+                        = l(tournament.date, format: :custom_datetime_date_and_no_time)
+
+        - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.now)
+        - if past_tournaments.any?
+          - past_tournaments_2022 = past_tournaments.where('date >= ? AND date < ?', Time.local(2022,1,1), Time.local(2023,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2022, year: '2022'
+          - past_tournaments_2021 = past_tournaments.where('date >= ? AND date < ?', Time.local(2021,1,1), Time.local(2022,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2021, year: '2021'
+          - past_tournaments_2020 = past_tournaments.where('date >= ? AND date < ?', Time.local(2020,1,1), Time.local(2021,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2020, year: '2020'
+          - past_tournaments_2019 = past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2020,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2019, year: '2019'
+
+    -# videos --------------------------------------------------------------------
+    - if youtube_video_ids.any?
+      .tab-pane.fade.show#videos{role: 'tabpanel', 'aria-labelledby'=>'videos-tab'}
+        .player__videos
+          .newest_video
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{URI.escape(youtube_video_ids[0])}"}
+          .other_videos{style: 'margin-top: 1rem;'}
+            - require 'open-uri'
+            - require 'json'
+            - youtube_video_ids[1.. -1].each do |v_id|
+              - begin
+                - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{URI.escape(v_id)}&format=json").read)
+                .row{style: 'margin-bottom: 1rem;'}
+                  .col-4{style: 'text-align: center;'}
+                    = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                  .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
+                    = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
+              - rescue OpenURI::HTTPError => ex
+                %p
+                  %strong= "#{ex}:"
+                  = "https://youtu.be/#{v_id}"

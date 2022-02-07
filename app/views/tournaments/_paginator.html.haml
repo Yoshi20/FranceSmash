@@ -1,0 +1,25 @@
+- if tournaments.any? && tournaments.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', tournaments.total_pages
+      %li.left-arrow
+        - if tournaments.current_page.present? && tournaments.current_page > 1
+          = link_to tournaments_path(search: params[:search], filter: params[:filter], page: tournaments.current_page-1, anchor: anchor), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+
+      - (1..tournaments.total_pages).each do |page|
+        %li{class: "#{"active" if page == tournaments.current_page}"}= link_to page.to_s, tournaments_path(search: params[:search], filter: params[:filter], page: page, anchor: anchor), value: page
+      %li.right-arrow
+        - if tournaments.try(:current_page).present? && tournaments.current_page < tournaments.total_pages
+          = link_to tournaments_path(search: params[:search], filter: params[:filter], page: tournaments.current_page+1, anchor: anchor), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

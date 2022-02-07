@@ -1,0 +1,29 @@
+.nav.nav-fill {
+  margin-bottom: 2rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-bottom: 1px solid $color-grey-light;
+
+  .nav-link {
+    font-weight: 600;
+    border: none;
+    display: inline-block;
+    background: transparent;
+    color: $color-grey;
+    text-transform: uppercase;
+    border-radius: 0;
+    &.active {
+      color: $color-france-smash;
+      border-bottom: 2px solid $color-france-smash;
+    }
+    &:hover {
+      color: $color-france-smash;
+    }
+  }
+}
+
+.tab-pane {
+  .table th {
+    padding-top: 0;
+  }
+}

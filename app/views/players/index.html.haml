@@ -1,0 +1,106 @@
+- set_meta_tags description: 'France Smash Players'
+
+.row
+  .col
+    %h1.page__title= t('players.title')
+
+%ul#players-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#stats-tab.nav-link.active{'data-toggle'=>'tab', href: '#stats', role: 'tab', 'aria-controls'=>'all'}
+      = t('players.stats')
+  %li.nav-item
+    %a#data-tab.nav-link{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
+      = t('players.data')
+
+-# search form
+.row{style: 'margin-top: -15px;'}
+  .col
+    .search-form.form-group
+      = form_tag players_path, method: 'get', class: 'form-inline' do
+        = search_field_tag :search, params[:search], class: 'form-control', placeholder: t('players.search')
+        = button_tag type: 'submit', class: 'btn btn-default', name: nil do
+          %span.material-icons= 'search'
+
+.tab-content#players-tabs-content
+  .tab-pane.fade.show.active#stats{role: 'tabpanel', 'aria-labelledby'=>'stats-tab'}
+    %table.table.table-hover.table-borderless
+      %thead.table-header
+        %tr
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('players.mains'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'main_characters', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.self_assessment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'self_assessment', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.xp'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('w_l'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
+
+      %tbody.table-content.with-show.player-list-body
+        - if @players.any?
+          - last_player_points = nil
+          - @players.each_with_index do |player, i|
+            %tr{'data-id': player.id, 'data-component'=>'player'}
+              %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+              %td.text-center
+                - if player.main_characters.any?
+                  %div
+                    - player.main_characters[0...3].each do |char|
+                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : t('players.undefined')
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : t('players.undefined')
+              %td.text-center
+                - if player.losses == 0 and player.wins == 0
+                  = '-'
+                - else
+                  = "#{player.win_loss_ratio} %"
+
+              - if current_user.present? and current_user.super_admin?
+                %td.admin-list-actions
+                  .admin-list-actions__link
+                    = link_to edit_player_path(player), class:'btn btn-default btn-square' do
+                      %span.material-icons.admin-actions__link__icon= 'edit'
+
+    .player-list-footer
+      = render 'paginator', players: @players, anchor: 'stats'
+
+  .tab-pane.fade#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
+    %table.table.table-hover.table-borderless
+      %thead.table-header
+        %tr
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.federal_state'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'federal_state', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'birth_year', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gender', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.comment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'comment', order: 'desc', anchor: 'data')
+
+      %tbody.table-content.with-show
+        - if @players.any?
+          - @players.each_with_index do |player, i|
+            %tr{'data-id': player.id, 'data-component'=>'player'}
+              %td
+                - if player.main_characters.any?
+                  - player.main_characters[0...1].each do |char|
+                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                - else
+                  .div{style: 'display: inline;'}
+                    %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+              %td.text-center
+                - if player.federal_state.present?
+                  = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
+                  = t("defines.federal_states.#{player.federal_state}")
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
+              %td.text-center= truncate(player.comment, length: 60)
+
+              - if current_user.present? and current_user.super_admin?
+                %td.admin-list-actions
+                  .admin-list-actions__link
+                    = link_to edit_player_path(player), class:'btn btn-default btn-square' do
+                      %span.material-icons.admin-actions__link__icon= 'edit'
+
+    .player-list-footer
+      = render 'paginator', players: @players, anchor: 'data'
+
+  - if !@players.any?
+    %p{style: 'text-align: center;'}
+    = t('players.no_players_found')

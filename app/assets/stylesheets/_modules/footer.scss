@@ -1,0 +1,35 @@
+.footer {
+  flex-shrink: 0;
+  background-color: $color-grey-dark;
+  color: $color-white;
+  text-align: center;
+
+  p {
+    padding-top: 1.7rem;
+  }
+
+  #donate-btn {
+    padding-top: 1.3rem;
+  }
+
+  .francesmash_logo {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .paypal {
+    margin-right: -0.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    .small {
+      font-size: 48%;
+    }
+
+    #donate-btn {
+      padding-top: 0;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<%= @tournament.name %>
+===============================================
+
+<%= t('hi') %> <%= @user.username %>.
+
+<%= t('tournaments.mailer.new_external') %>
+
+<%= t('tournaments.mailer.name') %> <%= @tournament.name %>
+<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+
+<%= t('tournaments.mailer.to_check_out2') %>
+  <%= @url %>
+
+<%= t('tournaments.mailer.we_wish_you_good_luck') %>
+
+
+<%= t('tournaments.mailer.if_you_dont_want') %>
