@@ -74,7 +74,7 @@ module ApplicationHelper
         { href: image_url('logo.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        site_name: 'francesmash.de',
+        site_name: 'francesmash.fr',
         title: 'FranceSmash',
         description: 'German Super Smash Bros. Ultimate Community Hub',
         type: 'website',

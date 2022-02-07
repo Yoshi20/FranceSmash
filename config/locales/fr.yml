@@ -409,7 +409,7 @@ fr:
     character: "Combattant"
 
   rankings:
-    title: "Classements"
+    title: "Ranking"
     official_power_ranking: "Power Rankings officiels"
     tournament_specific: "Par tournoi spécifique"
     filter:
@@ -445,6 +445,9 @@ fr:
       title: "BaWü"
     region_bayern:
       title: "Bavaria"
+
+  guides:
+    title: "Guides"
 
   rules:
     title: "Règles"
@@ -602,7 +605,7 @@ fr:
     players_videos: "Vidéo%{s} de %{player}:"
 
   communities:
-    title: "Communities"
+    title: "Communautés"
     body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
     # Auvergne
     # Bourgogne

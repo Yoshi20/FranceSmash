@@ -3,7 +3,7 @@ class TournamentMailer < ApplicationMailer
   def new_tournament_email
     @tournament = params[:tournament]
     @user = params[:user]
-    @url = "https://www.francesmash.de/tournaments/#{@tournament.id}"
+    @url = "https://www.francesmash.fr/tournaments/#{@tournament.id}"
     mail(to: @user.email, subject: "A new tournament was added: #{@tournament.name}")
   end
 
@@ -17,28 +17,28 @@ class TournamentMailer < ApplicationMailer
   def new_weekly_tournament_email
     @tournament = params[:tournament]
     @user = params[:user]
-    @url = "https://www.francesmash.de/tournaments/#{@tournament.id}"
+    @url = "https://www.francesmash.fr/tournaments/#{@tournament.id}"
     mail(to: @user.email, subject: "One or more weeklies were added: #{@tournament.name}")
   end
 
   def tournament_cancelled_email
     @tournament = params[:tournament]
     @user = params[:user]
-    @url = "https://www.francesmash.de/tournaments"
+    @url = "https://www.francesmash.fr/tournaments"
     mail(to: @user.email, subject: "Tournament was cancelled: #{@tournament.name.gsub('(cancelled) ', '')}")
   end
 
   def waiting_player_upgraded_email
     @tournament = params[:tournament]
     @user = params[:user]
-    @url = "https://www.francesmash.de/tournaments/#{@tournament.id}"
+    @url = "https://www.francesmash.fr/tournaments/#{@tournament.id}"
     mail(to: @user.email, subject: "You was upgraded from the waiting list")
   end
 
   def invalid_date_email
     @tournament = params[:tournament]
-    @url = "https://www.francesmash.de/tournaments/#{@tournament.id}/edit"
-    mail(to: 'admin@francesmash.de', subject: "External tournament with invalid date")
+    @url = "https://www.francesmash.fr/tournaments/#{@tournament.id}/edit"
+    mail(to: 'admin@francesmash.fr', subject: "External tournament with invalid date")
   end
 
 end

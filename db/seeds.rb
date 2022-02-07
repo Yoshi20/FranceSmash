@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-yomi = User.find_by_email('admin@francesmash.de')
+yomi = User.find_by_email('admin@francesmash.fr')
 if yomi.present?
   yomi.update(is_admin: true, is_super_admin: true)
 end

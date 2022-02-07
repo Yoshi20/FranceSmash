@@ -63,12 +63,12 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://www.francesmash.de'}
+  config.action_mailer.default_url_options = { :host => 'https://www.francesmash.fr'}
   # config.action_mailer.perform_deliveries = false
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default :charset => "utf-8"
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_options = {from: 'FranceSmash <admin@francesmash.de>'}
+  config.action_mailer.default_options = {from: 'FranceSmash <admin@francesmash.fr>'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
@@ -82,7 +82,7 @@ Rails.application.configure do
   # ActionMailer::Base.smtp_settings = {
   #   address: 'mail.infomaniak.com',
   #   port: 587, #or 25,
-  #   domain: 'francesmash.de',
+  #   domain: 'francesmash.fr',
   #   user_name: ENV['INFOMANIAK_EMAIL_USERNAME'],
   #   password: ENV['INFOMANIAK_EMAIL_PASSWORD'],
   #   authentication: 'plain',

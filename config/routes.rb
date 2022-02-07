@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post 'contact' => 'contact#contact'
 
+  get 'guides' => 'guides#index'
+
   get 'rankings' => 'rankings#index'
 
   get 'streams' => 'streams#index'

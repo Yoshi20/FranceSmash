@@ -27,7 +27,7 @@ Prod commands:
 
 General links:
 - https://francesmash.herokuapp.com
-- https://www.francesmash.de
+- https://www.francesmash.fr
 - https://www.smashfrance.de
 - https://challonge.com
 
