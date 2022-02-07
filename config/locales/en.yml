@@ -53,7 +53,7 @@ en:
       Nouvelle_Aquitaine: "New Aquitaine"
       Occitanie: "Occitania"
       Pays_de_la_Loire: "Loire Countries"
-      Provence-Alpes-Cote_d'Azur: "Provence-Alps-Azure Coast"
+      Provence-Alpes-Cote_dAzur: "Provence-Alps-Azure Coast"
     genders:
       male: "Male"
       female: "Female"
@@ -613,7 +613,7 @@ en:
     # Nouvelle_Aquitaine
     # Occitanie
     # Pays_de_la_Loire
-    # Provence-Alpes-Cote_d'Azur
+    # Provence-Alpes-Cote_dAzur
 
   users:
     mailer:

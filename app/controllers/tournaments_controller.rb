@@ -22,8 +22,8 @@ class TournamentsController < ApplicationController
       @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
     if params[:filter].present? and params[:filter] != 'all'
-      if helpers.regions_raw.include?(params[:filter].upcase)
-        region = params[:filter].upcase
+      if helpers.regions_raw.include?(params[:filter])
+        region = params[:filter]
         @tournaments = @tournaments.where(region: region)
         @past_tournaments = @past_tournaments.where(region: region)
       elsif params[:filter] == 's1_2019'

@@ -50,7 +50,7 @@
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
         - regions_raw.each do |region|
-          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == region.downcase ? 'btn-ghost' : 'btn-default'}"
+          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'upcoming'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -80,7 +80,7 @@
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
         - regions_raw.each do |region|
-          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region.downcase, anchor: 'past'), class: "btn #{params[:filter] == region.downcase ? 'btn-ghost' : 'btn-default'}"
+          .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'past'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
