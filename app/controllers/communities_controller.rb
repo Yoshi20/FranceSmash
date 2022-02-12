@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
   before_action { @section = 'communities' }
 
   # GET /communities

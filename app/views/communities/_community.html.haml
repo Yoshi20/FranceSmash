@@ -1,14 +1,8 @@
 -if community.present?
   %tr{'data-id': community.id, 'data-component': 'communitie'}
-
-    %td.text-center
-      = community.name
-
-    %td.text-center
-      = community.department || '-'
-
-    %td.text-center
-      = community.city || '-'
+    %td= community.department || '-'
+    %td= community.name
+    %td= community.city || '-'
 
     - if current_user.present? and current_user.admin?
       %td.admin-list-actions
