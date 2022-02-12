@@ -65,7 +65,7 @@ module ApplicationHelper
     {
       reverse: true,
       separator: '|',
-      description: 'German Super Smash Bros. Ultimate Community Hub',
+      description: 'France Super Smash Bros. Ultimate Community Hub',
       keywords: 'super smash bros, nintendo, esports, ultimate',
       canonical: request.original_url,
       noindex: !Rails.env.production?,
@@ -76,7 +76,7 @@ module ApplicationHelper
       og: {
         site_name: 'francesmash.fr',
         title: 'FranceSmash',
-        description: 'German Super Smash Bros. Ultimate Community Hub',
+        description: 'France Super Smash Bros. Ultimate Community Hub',
         type: 'website',
         url: request.original_url,
         image: image_url('logo.jpg')

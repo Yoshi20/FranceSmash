@@ -1,16 +1,16 @@
 class CommunitiesController < ApplicationController
+  before_action :set_community, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action { @section = 'communities' }
 
   # GET /communities
   def index
   end
 
-  # GET /communities/
-  def nrw
-    community_regions = ['NW']
-    discord_keys = ['Aba35kP', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
+  # GET /communities/1
+  # GET /communities/1.json
+  def show
+    discord_keys = @community.discord.split(',').map(&:strip)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -18,104 +18,208 @@ class CommunitiesController < ApplicationController
     @discord_invites_json.compact
   end
 
-  # GET /communities/hessen
-  def hessen
-    community_regions = ['HE', 'RP', 'SL']
-    discord_keys = ['gdhCQpzKb2', 'Q49Dbky', 'phzRTMw', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
-    end
-    @discord_invites_json.compact
+  # GET /communities/new
+  def new
+    @community = Community.new
   end
 
-  # GET /communities/nds
-  def nds
-    community_regions = ['NI', 'HB']
-    discord_keys = ['0X3myOFZHGCpW1G0', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
-    end
-    @discord_invites_json.compact
+  # GET /communities/1/edit
+  def edit
   end
 
-  # GET /communities/bayern
-  def bayern
-    community_regions = ['BY']
-    discord_keys = ['tm2azmK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+  # POST /communities
+  # POST /communities.json
+  def create
+    @community = Community.new(community_params)
+    respond_to do |format|
+      if @community.save
+        format.html { redirect_to @community, notice: t('flash.notice.community_created') }
+        format.json { render :show, status: :created, location: @community }
+      else
+        format.html { render :new }
+        format.json { render json: @community.errors, status: :unprocessable_entity }
+      end
     end
-    @discord_invites_json.compact
   end
 
-  # GET /communities/berlin
-  def berlin
-    community_regions = ['BE', 'BB']
-    discord_keys = ['6r76SkA', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+  # PATCH/PUT /communities/1
+  # PATCH/PUT /communities/1.json
+  def update
+    respond_to do |format|
+      if @community.update(community_params)
+        format.html { redirect_to @community, notice: t('flash.notice.community_updated') }
+        format.json { render :show, status: :ok, location: @community }
+      else
+        format.html { render :edit }
+        format.json { render json: @community.errors, status: :unprocessable_entity }
+      end
     end
-    @discord_invites_json.compact
   end
 
-  # GET /communities/norden
-  def norden
-    community_regions = ['SH', 'HH', 'MV']
-    discord_keys = ['GHS8Q5Y', 'udNKmTK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+  # DELETE /communities/1
+  # DELETE /communities/1.json
+  def destroy
+    @community.destroy
+    respond_to do |format|
+      format.html { redirect_to communities_path, notice: t('flash.notice.community_deleted') }
+      format.json { head :no_content }
     end
-    @discord_invites_json.compact
   end
 
-  # GET /communities/osten
-  def osten
-    community_regions = ['SN', 'ST', 'TH']
-    discord_keys = ['rBzNfVD', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+  def grand_est
+    @region = 'Grand_Est'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
     end
-    @discord_invites_json.compact
   end
 
-  # GET /communities/bawu
-  def bawu
-    community_regions = ['BW']
-    discord_keys = ['ur4JzUT', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_fr.active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
-    @region_administartors = User.all_fr.where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
-    @discord_invites_json = []
-    discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+  def nouvelle_aquitaine
+    @region = 'Nouvelle_Aquitaine'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
     end
-    @discord_invites_json.compact
   end
+
+  def auvergne_rhone_alpes
+    @region = 'Auvergne'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def bourgogne_franche_comte
+    @region = 'Bourgogne'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def bretagne
+    @region = 'Bretagne'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def centre_val_de_loire
+    @region = 'Centre'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def corsica
+    @region = 'Corsica'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def paris_region
+    @region = 'Ile_de_France'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def occitanie
+    @region = 'Occitanie'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def hauts_de_france
+    @region = 'Hauts-de-France'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def normandie
+    @region = 'Normandie'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def pays_de_la_loire
+    @region = 'Pays_de_la_Loire'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def provence_alpes_cote_azur
+    @region = 'Provence-Alpes-Cote_dAzur'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  # def reunion
+  #   @communities = Community.all_fr.where(region:'reunion').order(name: :desc)
+  # end
+  #
+  # def martinique
+  #   @communities = Community.all_fr.where(region:'martinique').order(name: :desc)
+  # end
+  #
+  # def french_guiana
+  #   @communities = Community.all_fr.where(region:'french_guiana').order(name: :desc)
+  # end
+  #
+  # def guadeloupe
+  #   @communities = Community.all_fr.where(region:'guadeloupe').order(name: :desc)
+  # end
+  #
+  # def mayotte
+  #   @communities = Community.all_fr.where(region:'mayotte').order(name: :desc)
+  # end
+
 
   private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_community
+    @community = Community.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def community_params
+    params.require(:community).permit(
+      :name, :city, :department, :region, :country_code, :discord, :twitter,
+      :instagram, :facebook, :youtube, :twitch
+    )
+  end
+
+  def authenticate_admin!
+    unless current_user.present? && current_user.admin?
+      respond_to do |format|
+        format.html { redirect_to communities_path, alert: t('flash.alert.unauthorized') }
+        format.json { render json: {}, status: :unauthorized }
+      end
+    end
+  end
 
   require 'open-uri'
   require 'json'
   def request_discord_invite(key)
     Rails.cache.fetch("discord_invite_#{key}", expires_in: 1.day) do
-      url = "https://discord.com/api/v9/invites/#{key}?with_counts=true"
+      url = "https://discord.com/api/v9/invites/#{URI.escape(key)}?with_counts=true"
       puts "Requesting: GET #{url}"
       begin
         json_data = JSON.parse(URI.open(url).read)

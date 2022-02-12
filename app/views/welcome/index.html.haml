@@ -19,7 +19,8 @@
         %p{style: 'margin-bottom: 0;'}
           %strong= t('communities.title')
         -# = image_tag "Flag_map_of_France.svg", class: 'welcome_image'
-        = image_tag "Karte_Deutschland.svg", class: 'welcome_image'
+        -# = image_tag "Karte_Deutschland.svg", class: 'welcome_image'
+        = image_tag "france-map.jpg", class: 'welcome_image'
 %p
   = t('welcome.body0')
 
@@ -52,4 +53,4 @@
 
 %p
   = t('welcome.body7',
-    meele_link: link_to('German Melee', 'https://twitter.com/German_Melee', target: '_blank', style: 'font-weight: 600;')).html_safe
+    meele_link: link_to('France Melee', 'https://twitter.com/France_Melee', target: '_blank', style: 'font-weight: 600;')).html_safe

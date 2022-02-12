@@ -92,6 +92,9 @@ fr:
       news_created: "News post créé(e) avec succès"
       news_updated: "News post mis(e) à jour avec succès"
       news_deleted: "News post supprimé(e) avec succès"
+      community_created: "Communauté créé(e) avec succès"
+      community_updated: "Communauté mis(e) à jour avec succès"
+      community_deleted: "Communauté supprimé(e) avec succès"
       player_updated: "Joueur mis à jour avec succès"
       contact: "Merci. Votre message a été envoyé"
     alert:
@@ -169,7 +172,7 @@ fr:
 
   welcome:
     title: "SmashUltimate.fr"
-    body0: "Welcome to Smash Bros. France, your entry point into the German Super Smash Bros. Ultimate tournament scene."
+    body0: "Welcome to Smash Bros. France, your entry point into the France Super Smash Bros. Ultimate tournament scene."
     body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
     body2: "Your regional community should be able to be found under %{communities}. There you will also meet contacts from your region."
     body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
@@ -404,7 +407,7 @@ fr:
     youngest: "Le plus jeune"
     mean-age: "Ø âge"
     oldest: "Le plus vieux"
-    region: "Federal state"
+    region: "Région"
     number_of_players: "Nombre de joueurs"
     character: "Combattant"
 
@@ -606,7 +609,20 @@ fr:
 
   communities:
     title: "Communautés"
-    body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
+    body: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
+    new: "Nouveau communautés"
+    prohibited: "prohibited this community from being saved:"
+    name: "Nom"
+    city: "Ville"
+    department: "Département"
+    region: "Région"
+    discord: "Discords"
+    multiple_discords: "(Seperate multiple keys with a comma)"
+    twitter: "Twitter"
+    instagram: "Instagram"
+    facebook: "Facebook"
+    youtube: "YouTube"
+    twitch: "Twitch"
     # Auvergne
     # Bourgogne
     # Bretagne
