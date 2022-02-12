@@ -716,7 +716,7 @@ en:
     city: "City"
     department: "Department"
     region: "Region"
-    discord: "Discords"
+    discord: "Discord keys"
     multiple_discords: "(Seperate multiple keys with a comma)"
     twitter: "Twitter"
     instagram: "Instagram"

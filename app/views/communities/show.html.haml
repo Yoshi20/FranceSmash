@@ -10,20 +10,14 @@
         %h1
           = @community.name
         - logos_shown = 0
-        - if @community.discord.present?
-          .tooltip{style: 'position: absolute; top: 0px; right: 0px; z-index: 1;'}
-            = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @community.discord, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
-            %span.tooltiptext{style: 'margin-left: -78px;'}
-              = @community.discord
-          - logos_shown = logos_shown + 1;
         - if @community.twitter.present?
-          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), "https://twitter.com/#{@community.twitter}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), @community.twitter.include?('http') ? @community.twitter : "https://twitter.com/#{@community.twitter}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
         - if @community.instagram.present?
-          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), "https://www.instagram.com/#{@community.instagram}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @community.instagram.include?('http') ? @community.instagram : "https://www.instagram.com/#{@community.instagram}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
         - if @community.facebook.present?
-          = link_to image_tag('Facebook_Logo.svg', height: '35px', width: '30px'), "https://www.facebook.com/#{@community.facebook}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Facebook_Logo.svg', height: '35px', width: '30px'), @community.facebook.include?('http') ? @community.facebook : "https://www.facebook.com/#{@community.facebook}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
@@ -68,7 +62,7 @@
       .row
         - if @community.twitch.present?
           .col{style: 'text-align: center;'}
-            = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), "https://www.twitch.tv//#{@community.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), @community.twitch.include?('http') ? @community.twitch : "https://www.twitch.tv/#{@community.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
         - if @community.youtube.present?
           .col{style: 'text-align: center;'}
-            = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), "https://www.youtube.tv//#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
