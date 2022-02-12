@@ -5,6 +5,18 @@ class CommunitiesController < ApplicationController
 
   # GET /communities
   def index
+    @communities = Community.all_fr.order(region: :desc)
+    i = -1
+    prevRegion = ''
+    @communities_regions_array = []
+    @communities.each do |c|
+      if c.region != prevRegion
+        i = i + 1
+        @communities_regions_array[i] = []
+      end
+      @communities_regions_array[i] << c
+      prevRegion = c.region
+    end
   end
 
   # GET /communities/1
