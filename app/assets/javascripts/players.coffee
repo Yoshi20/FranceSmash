@@ -22,9 +22,10 @@ document.addEventListener 'turbolinks:load', ->
     $t = $(this)
     character = $t.val()
     skin_nr = $t.attr('name')[9]
-    host_and_stuff = window.location.href.replace(window.location.pathname, '')
-    url = host_and_stuff+'/character_skins.js?character='+character+'&skin_nr='+skin_nr
     $main_char_skin_class = $(".main_char_skin#{skin_nr}")
+    current_character_skin_nr = $main_char_skin_class.data('value')
+    host_and_stuff = window.location.href.replace(window.location.pathname, '')
+    url = host_and_stuff+'/character_skins.js?character='+character+'&skin_nr='+skin_nr+'&current_character_skin_nr='+current_character_skin_nr
     if this.checked
       $.ajax
         method: 'get'

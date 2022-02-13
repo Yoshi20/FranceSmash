@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_140519) do
+ActiveRecord::Schema.define(version: 2022_02_13_212334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_02_12_140519) do
     t.string "canton"
     t.string "country_code", default: "fr"
     t.string "region"
+    t.integer "main_character_skins", default: [], array: true
   end
 
   create_table "registrations", force: :cascade do |t|
