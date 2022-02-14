@@ -7,6 +7,7 @@ document.addEventListener 'turbolinks:load', ->
   # radio button deselection
   wasChecked = false
   $('.main_char input:radio').on 'mousedown', (e) ->
+    this.focus();
     if this.checked
       wasChecked = true
     else
