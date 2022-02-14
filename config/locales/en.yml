@@ -288,6 +288,11 @@ en:
     log_in: "Log in"
     sign_up: "register"
     communities: "Communities"
+    no_donations_yet: "No donations yet 😢"
+    all_donations: "All donations"
+
+  donations:
+    title: "Donation wall"
 
   information:
     title: "About"
@@ -472,6 +477,7 @@ en:
     best_rank: "Best rank"
     wins: "Wins"
     losses: "Losses"
+    canton: "Canton"
     region: "Region"
     gender: "Gender"
     birth_year: "Birth year"

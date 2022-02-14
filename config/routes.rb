@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   post 'contact' => 'contact#contact'
 
+  get 'donations' => 'donations#index'
+  post 'donation' => 'donations#donation'
+
   get 'guides' => 'guides#index'
 
   get 'rankings' => 'rankings#index'

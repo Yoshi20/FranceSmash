@@ -137,4 +137,4 @@ document.addEventListener 'turbolinks:load', ->
       scrollTop: 0
     }, 500)
 
-  $('.toast').toast({delay: 10000}).toast('show')
+  $('.toast-flash').toast({delay: 10000}).toast('show')

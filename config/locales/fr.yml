@@ -185,6 +185,11 @@ fr:
     log_in: "Se connecter"
     sign_up: "S'inscrire"
     communities: "Communities"
+    no_donations_yet: "Pas encore de dons 😢"
+    all_donations: "Tous les dons"
+
+  donations:
+    title: "Mur des dons"
 
   information:
     title: "Information"
@@ -370,6 +375,7 @@ fr:
     wins: "Victoires"
     losses: "Défaites"
     canton: "Canton"
+    region: "Région"
     gender: "Genre"
     birth_year: "Année de naissance"
     self_assessment: "Auto-évaluation"

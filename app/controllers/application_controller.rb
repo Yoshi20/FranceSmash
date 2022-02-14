@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :authenticate_user!, except: [
-    :index, :show, :location, :unregistered, :contact,
+    :index, :show, :location, :unregistered, :contact, :donation,
     :grand_est, :nouvelle_aquitaine, :auvergne_rhone_alpes,
     :bourgogne_franche_comte, :bretagne, :centre_val_de_loire, :corsica,
     :paris_region, :occitanie, :hauts_de_france, :normandie, :pays_de_la_loire,
