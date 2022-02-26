@@ -1,4 +1,4 @@
-# FranceSmash
+# SmashUltimate.fr
 France Super Smash Bros community finder & simple tournament manager (Ruby on Rails project)
 
 Local commands:

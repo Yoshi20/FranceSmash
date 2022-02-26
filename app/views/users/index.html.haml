@@ -15,7 +15,7 @@
       - mail_string = ''
       - User.all_fr.where(is_admin: true).each do |u|
         - mail_string = mail_string + u.email + '; '
-      = mail_to "", "Write all admins an email", bcc: mail_string, subject: "FranceSmash", body: "Hi FranceSmash admins\n\n", class: 'btn btn-default'
+      = mail_to "", "Write all admins an email", bcc: mail_string, subject: "SmashUltimate.fr", body: "Hi SmashUltimate.fr admins\n\n", class: 'btn btn-default'
 
 .user-list
   %table.table.table-hover.table-borderless

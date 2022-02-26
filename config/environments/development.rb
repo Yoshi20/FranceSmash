@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default :charset => "utf-8"
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'FranceSmash <admin@francesmash.fr>'}
+  config.action_mailer.default_options = {from: 'SmashUltimate.fr <admin@francesmash.fr>'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',

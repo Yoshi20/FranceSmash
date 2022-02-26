@@ -75,7 +75,7 @@ module ApplicationHelper
       ],
       og: {
         site_name: 'francesmash.fr',
-        title: 'FranceSmash',
+        title: 'SmashUltimate.fr',
         description: 'France Super Smash Bros. Ultimate Community Hub',
         type: 'website',
         url: request.original_url,

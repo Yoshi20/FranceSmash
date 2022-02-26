@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'FranceSmash <admin@francesmash.fr>'
+  default from: 'SmashUltimate.fr <admin@francesmash.fr>'
   layout 'mailer'
 end

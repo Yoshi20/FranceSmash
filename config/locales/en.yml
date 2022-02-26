@@ -260,7 +260,7 @@ en:
       privacy_policy: "Privacy Notice"
       contact: "Contact"
       mail_subject: "I faced a problem or have a question!"
-      mail_body: "Hi FranceSmash\n\nI'm ??? and I would like to ???"
+      mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to ???"
 
   partials:
     events: "Next Tournaments"
@@ -274,15 +274,14 @@ en:
       not_found: "No streams found"
 
   welcome:
-    title: "FranceSmash"
-    body0: "Welcome to Smash Bros. France, your entry point into the France Super Smash Bros. Ultimate tournament scene."
+    title: "SmashUltimate.fr"
+    body0: "Welcome to SmashUltimate.fr, your entry point into the France Super Smash Bros. Ultimate tournament scene."
     body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    body2: "Your regional community should be able to be found under %{communities}. There you will also meet contacts from your region."
-    body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
+    body2: "Your regional community should be able to be found under %{communities}."
+    body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
     body4: "You can find the official Power Ranking with the best players in France under %{rankings_link}."
-    body5: "Here you can find all %{players_link} registered on FranceSmash and here you can find the %{statistics_link}."
-    body6: "Information about FranceSmash can be found under %{informations_link}."
-    body7: "If you want to connect to the german Melee community, visit %{meele_link}."
+    body5: "Here you can find all %{players_link} registered on SmashUltimate.fr and here you can find the %{statistics_link}."
+    body6: "Information about SmashUltimate.fr can be found under %{informations_link}."
     tournament_list: "Tournaments list"
     calendar: "Calendar"
     log_in: "Log in"
@@ -302,10 +301,10 @@ en:
       francesmash: |
         This website was created to provide an overview of the Super Smash Bros. Ultimate scene in France and to provide an entry point for new players to find their way into their local smash community.<br><br>
         In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-        The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (coordination with TOs).
+        The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (coordination with TOs).
     calendar:
       title: "Calendar"
-      tournaments_body: "With the help of a self written %{link} program, that runs once every night, FranceSmash is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
+      tournaments_body: "With the help of a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
       calendar_body: "The calendar shows all found SSBU tournaments in france from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
       calendar_weekly: "Weekly -> On francesmash.fr created weekly tournament"
       calendar_internal: "Internal -> On francesmash.fr created tournament"
@@ -313,7 +312,7 @@ en:
     power_ranking:
       title: "Power Ranking"
       power_ranking: "Power Ranking (PR)"
-      power_ranking_body: "A tournament will be considered an official FranceSmash tournament and will count to the PR when the following requirements will be met:"
+      power_ranking_body: "A tournament will be considered an official SmashUltimate.fr tournament and will count to the PR when the following requirements will be met:"
       power_ranking_li_1: "Announced at least 2 weeks before its start date on francesmash.fr"
       power_ranking_li_2: "A minimum of 16 attendees"
       power_ranking_li_3: "Reasonable seeding"
@@ -323,18 +322,18 @@ en:
     tournament_manager:
       title: "Tournament manager"
       tournament_organiser: "Tournament organiser"
-      tournament_organiser_body: "FranceSmash.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the FranceSmash Tournament Manager? Just let me know %{link}."
+      tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just let me know %{link}."
       tournament_organiser_mail: "via email"
       tournament_organiser_mail_subject: "I would like to be an administrator!"
-      tournament_organiser_mail_body: "Hi FranceSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+      tournament_organiser_mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to be an administrator because:\n???"
       bracket_tool: "Bracket tool"
-      bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the FranceSmash tournament manager uses %{link} for now."
+      bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.fr tournament manager uses %{link} for now."
       bracket_seeding: "Bracket seeding"
       bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on francesmash.fr:"
       bracket_seeding_body2: "The final seeding is done manually by a TO."
     results:
       title: "Results"
-      results_body: "Besides the results (match scores and rankings) of the FranceSmash Tournament Manager internal tournaments, francesmash.fr is also able to get the results from all other tournaments in france. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+      results_body: "Besides the results (match scores and rankings) of the SmashUltimate.fr Tournament Manager internal tournaments, francesmash.fr is also able to get the results from all other tournaments in france. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
       ranking_system: "Ranking system"
       ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
       ranking_system_rank: "Rank"
@@ -509,7 +508,7 @@ en:
   statistics:
     title: "Overview"
     title2: "Player overview"
-    count_total: "Total registered players on FranceSmash"
+    count_total: "Total registered players on SmashUltimate.fr"
     in_2022: "in 2022"
     youngest: "Youngest"
     mean-age: "Ø age"
@@ -525,7 +524,7 @@ en:
     filter:
       overall: "Overall"
       seed_points: "Seed points"
-      note: "(Note: Only on FranceSmash registered players will appear in these rankings)"
+      note: "(Note: Only on SmashUltimate.fr registered players will appear in these rankings)"
     no_players_found: "No players found yet"
     s1_19:
       title: "Season 1 2019"
@@ -582,9 +581,9 @@ en:
   tournaments:
     title: "Tournaments"
     mailer:
-      new_external: "A new external tournament was added to the FranceSmash Tournament Manager."
-      new_tournament: "A new tournament was added to the FranceSmash Tournament Manager."
-      new_weekly: "One or more weeklies were added to the FranceSmash Tournament Manager. Here are the data of the first:"
+      new_external: "A new external tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_tournament: "A new tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_weekly: "One or more weeklies were added to the SmashUltimate.fr Tournament Manager. Here are the data of the first:"
       too_few_registrations: "Because of too few registrations or other reasons, an administrator has cancelled the tournament \"<strong>%{tournament}</strong>\"."
       player_left_tournament: "Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament."
       name: "Name:"
@@ -658,8 +657,8 @@ en:
     new:
       title: "New tournament"
       body: "You can create either an internal, an external or one or more weekly tournaments."
-      li1: "Internal tournaments are supporting all the FranceSmash Tournament Manager functionalitly"
-      li2: "External tournaments are used to link a different registration website with the FranceSmash Tournament Manager"
+      li1: "Internal tournaments are supporting all the SmashUltimate.fr Tournament Manager functionalitly"
+      li2: "External tournaments are used to link a different registration website with the SmashUltimate.fr Tournament Manager"
       li3: "Weeklies are the same as internal tournaments. But you can create multiple tournaments at once by setting an end date.
         The weeklies name will be generated from the defined city and date to e.g: 'SSBU Weekly Berlin KW20 2020'"
     details: "Details"
@@ -750,7 +749,7 @@ en:
 
   users:
     mailer:
-      welcome: "Welcome to the FranceSmash Tournament Manager"
+      welcome: "Welcome to the SmashUltimate.fr Tournament Manager"
       signed_up: "You have successfully signed up. Your username is:"
       to_join: "To join some tournaments, just follow %{link}."
       to_join2: "To join some tournaments, just follow this link:"
@@ -770,8 +769,8 @@ en:
     challonge_api_key: "Challonge api key (%{link})"
     wants_major_email: "Inform me when a major tournament was added"
     wants_weekly_email: "Inform me when a weekly tournament was added"
-    allows_emails_from_francesmash: "I agree that FranceSmash sends me emails about important community topics & big tournament announcements from time to time"
-    allows_emails_from_partners: "I agree that partners of FranceSmash send me emails from time to time"
+    allows_emails_from_francesmash: "I agree that SmashUltimate.fr sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners: "I agree that partners of SmashUltimate.fr send me emails from time to time"
     data_agreement: "(Mandatory field) I agree that my data will be publicly viewable via my player profile and will be used for player statistics. The data provided can be edited or deleted at any time via \"Edit profile\" or \"Account\""
     current_password: "Current password"
     enter_current_password: "(enter your current password to confirm the changes)"
