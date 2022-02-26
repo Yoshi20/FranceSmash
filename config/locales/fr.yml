@@ -623,6 +623,8 @@ fr:
     city: "Ville"
     department: "Département"
     region: "Région"
+    regions: "Régions"
+    characters: "Personnages"
     discord: "Discord keys"
     multiple_discords: "(Seperate multiple keys with a comma)"
     twitter: "Twitter"

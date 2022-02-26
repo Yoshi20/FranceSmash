@@ -22,8 +22,16 @@
       %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
         = link_to t('news.title'), news_index_path, class: 'nav-link'
 
-      %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
-        = link_to t('communities.title'), communities_path, class: 'nav-link'
+      %li.nav-item.dropdown{role: "presentation", class: ((@section == 'communities' or @section == 'regions') ? 'active' : 'inactive')}
+        %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          = t('communities.title')
+          .d-none.d-lg-block{style: "height: 24px;"}
+            %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+          = link_to t('communities.regions'), communities_path, class: 'dropdown-item'
+          = link_to t('communities.characters'), communities_smashcords_path, class: 'dropdown-item'
 
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

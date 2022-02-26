@@ -202,6 +202,10 @@ class CommunitiesController < ApplicationController
   #   @communities = Community.all_fr.where(region:'mayotte').order(name: :desc)
   # end
 
+  def smashcords
+
+  end
+
 
   private
 
