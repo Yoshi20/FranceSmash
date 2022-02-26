@@ -607,7 +607,7 @@ en:
     name: "Name"
     name_placeholder: "SSBU Tournament ..."
     city: "City"
-    registration_fee: "Registration fee [Euro]"
+    registration_fee: "Registration fee [€]"
     registration_fee_short: "Registration fee"
     total_seats: "Total seats"
     external_registration_link: "External registration link"
