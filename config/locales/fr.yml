@@ -332,7 +332,7 @@ fr:
       bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
     results:
       title: "Résultats"
-      results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne, SmashUltimate.fr peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
+      results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne, SmashUltimate.fr peut aussi obtenir les résultats de tous les autres tournois en France.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
       ranking_system: "Système de Classement"
       ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit. Ce classement est indépendant du power ranking."
       ranking_system_rank: "Rang"
