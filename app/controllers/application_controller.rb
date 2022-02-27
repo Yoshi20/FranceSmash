@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     :grand_est, :nouvelle_aquitaine, :auvergne_rhone_alpes,
     :bourgogne_franche_comte, :bretagne, :centre_val_de_loire, :corsica,
     :paris_region, :occitanie, :hauts_de_france, :normandie, :pays_de_la_loire,
-    :provence_alpes_cote_azur, :smashcords
+    :provence_alpes_cote_azur, :character_discords
   ]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit

@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   # get "/communities/french_guiana" => "communities#french_guiana"
   # get "/communities/guadeloupe" => "communities#guadeloupe"
   # get "/communities/mayotte" => "communities#mayotte"
-  get "/communities/smashcords" => "communities#smashcords"
+  get "/communities/character_discords" => "communities#character_discords"
   resources :communities
 
   resources :news

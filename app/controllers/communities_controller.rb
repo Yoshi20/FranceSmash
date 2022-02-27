@@ -202,8 +202,33 @@ class CommunitiesController < ApplicationController
   #   @communities = Community.all_fr.where(region:'mayotte').order(name: :desc)
   # end
 
-  def smashcords
-
+  def character_discords
+    @discords = [
+      ["banjo_and_kazooie", "fEyhZrn"], ["bayonetta", "DC36FXc"], ["bowser", "nF9kx7W"],
+      ["bowser_jr", "eFDYEfG"], ["byleth", "KDTPNfs"], ["captain_falcon", "zxxdHxU"],
+      ["chrom", "wwnhVjS"], ["cloud", "acHKeyQ"], ["corrin", "F98MKp8"], ["daisy", "5EDcCC9"],
+      ["dark_pit", "tRzaFXP"],  ["dark_samus", "e9vyVF2"], ["diddy_kong", "aNm6hmkwjV"],
+      ["donkey_kong", "bt72UvP"], ["dr_mario", "3b2v576"], ["duck_hunt", "MEmd3C3"],
+      ["falco", "EdBwraB"], ["fox", "4JfXSG9"], ["ganondorf", "3G7akxP"], ["greninja", "ERX3BSr"],
+      ["hero", "sevQSfS"], ["ice_climbers", "eDqA2Xp"], ["ike", "hT6zdue"], ["incineroar", "QhyTjn7"],
+      ["inkling", "TjRTWhz"], ["isabelle", "YNdU5B8"], ["jigglypuff", "dFySWuP"],
+      ["joker", "x6cHgmM"], ["kazuya", "Njtpw4W656"], ["ken", "CPptRsR"], ["king_dedede", "rcseuAP"],
+      ["king_k_rool", "sQCDnKx"], ["kirby", "AjFA47Q"], ["link", "8pm4FBB"], ["little_mac", "fUmq4cJ"],
+      ["lucario", "ptKYD7v"], ["lucas", "yWV5NN8"], ["lucina", "XRA9RkM"], ["luigi", "DzKnQeX"],
+      ["mario", "3b2v576"], ["marth", "XRA9RkM"], ["mega_man", "sKp954t"], ["meta_knight", "THs9u5f"],
+      ["mewtwo", "JFtDMph"], ["mii_brawler", "2TRzK6U"], ["mii_gunner", "2TRzK6U"],
+      ["mii_swordfighter", "2TRzK6U"], ["min_min", "phqePSW"], ["mr_game_and_watch", "MUMcDJF"],
+      ["ness", "3c5JPBh"], ["olimar", "6yWuNQa"], ["pac_man", "CmDjRXz"], ["palutena", "2hSRYg2"],
+      ["peach", "5EDcCC9"], ["pichu", "5NBk3MT"], ["pikachu", "4Zu58Q5"], ["piranha_plant", "xrHCvpX"],
+      ["pit", "tRzaFXP"], ["pokemon_trainer", "Y6dhCsM"], ["pyra_and_mythra", "7g8gY7wQJH"],
+      ["richter", "ZDvJWdz"], ["ridley", "yenwRqm"], ["rob", "rSx8MSf"], ["robin", "Gpc7Dbu"],
+      ["rosalina_and_luma", "zfvA8xV"], ["roy", "wwnhVjS"], ["ryu", "CPptRsR"],
+      ["samus", "e9vyVF2"], ["sephiroth", "APW2QScwW7"], ["sheik", "edvYN57"], ["shulk", "GneEZAC"],
+      ["simon", "ZDvJWdz"], ["snake", "WgWhze4"], ["sonic", "NVWzs5M"], ["sora", "AaZjVBnANh"],
+      ["steve", "7nK7ADz"], ["terry", "WXW26zN"], ["toon_link", "mSU95AB"], ["villager", "9N6Rr3B"],
+      ["wario", "jTDGUC2"], ["wii_fit_trainer", "NcGbfek"], ["wolf", "esk7R3H"],
+      ["yoshi", "A88DP87"], ["young_link", "zcZFt7x"], ["zelda", "ke3SBMC"], ["zero_suit_samus", "vHTu5sQ"],
+    ]
   end
 
 
